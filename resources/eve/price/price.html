@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='UTF-8'>
+    <title>X</title>
+    <style>
+        @font-face {
+            font-family: 'tttgbnumber';
+            src: url('{{_res_path}}/font/tttgbnumber.ttf');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'hanyi';
+            src: url('{{_res_path}}/font/hanyi.ttf');
+            font-weight: normal;
+            font-style: normal;
+        }
+        *{
+            font-family: tttgbnumber;
+        }
+        .container {
+            box-sizing: border-box;
+            max-width: 800px;
+            padding-top: 10px;
+        }
+
+        .object_info {
+            margin-left: 10px;
+            max-height: 64px;
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+        }
+        .object_info_title{
+            line-height: 32px;
+            margin-left: 30px;
+            color: rgba(0, 0, 0, 0.85);
+            font-weight: 800;
+        }
+        .title{
+            font-family: hanyi;
+        }
+
+        .object_info_image {
+            height: 64px;
+            width: 64px;
+        }
+
+        .object_info_image img {
+            height: 100%;
+            width: 100%;
+        }
+
+        .price_table_container{
+            margin-top: 30px;
+        }
+        .price_table {
+            width: 800px;
+            font-size: 14px;
+            table-layout: auto;
+            border-collapse: collapse;
+            background: #fff;
+            border-radius: 2px;
+            font-family: hanyi;
+            border: 1px solid #f0f0f0;
+        }
+        .price_table .price_table_th{
+            padding: 8px 16px;
+            background-color: #fafafa;
+        }
+        #price_chart {
+            margin-top: 30px;
+            width: 800px;
+            height: 400px;
+        }
+        .up{
+            color: green;
+        }
+        .down{
+            color: red;
+        }
+    </style>
+    <link rel='stylesheet' href='{{_res_path}}/style/base.css'>
+    <script src='{{_res_path}}/echarts/echarts.js'></script>
+</head>
+<body>
+<div>
+    <div class='container' id='container'>
+        <div class='object_info'>
+            <div class='object_info_image'>
+                <img alt='img' src='https://images.evetech.net/Type/{{typeId}}_64.png' id='object_info_img'/>
+            </div>
+            <div class='object_info_title'>
+                <div class='object_info_title_cn' id='object_info_title_cn_name'><span class='title'>中文名: </span><span class='title'>{{typeName}}</span></div>
+                <div class='object_info_title_en' id='object_info_title_en_name'><span class='title'>英文名: </span><span>{{typeEnName}}</span></div>
+            </div>
+            <div class='object_info_title'>
+                <div class='object_info_title_buy' id='object_info_title_buy'><span class='title'>收单</span>: <span>{{buy}} ISK</span></div>
+                <div class='object_info_title_seller' id='object_info_title_seller'><span class='title'>卖单</span>: <span>{{sell}} ISK</span></div>
+            </div>
+            {{if typeName == '伊甸币'}}
+            <div class='object_info_title' >
+                <div class='object_info_title_buy' ><span class='title'>套装收单</span>: <span>{{ buy500 }} ISK</span></div>
+                <div class='object_info_title_seller' ><span class='title'>套装卖单</span>: <span>{{sell500}} ISK</span></div>
+            </div>
+            {{/if}}
+        </div>
+
+        <div class='price_table_container' >
+            <table class='price_table'>
+                <tr>
+                    <th class='price_table_th'>30天平均收单</th>
+                    <td>
+                        {{if buyScale>0}}
+                        <span class='up'>{{buyScale}}%,</span>
+                        {{else}}
+                        <span class='down'>{{buyScale}}%,</span>
+                        {{/if}}
+                        {{buy30}} ISK</td>
+                </tr>
+                <tr>
+                    <th class='price_table_th'>30天平均卖单</th>
+                    <td>
+                        {{if sellScale>0}}
+                        <span class='up'>{{sellScale}}%,</span>
+                        {{else}}
+                        <span class='down'>{{sellScale}}%,</span>
+                        {{/if}}
+                        {{sell30}} ISK</td>
+                </tr>
+            </table>
+        </div>
+        <div id='price_chart'></div>
+        <span  style='color: red;width: 500px;text-align: center;display: block;margin: -10px auto auto;'>
+            Create By 雨轩机器人 & 机器人内测群：601162540
+        </span>
+        <br>
+    </div>
+</div>
+</body>
+<script type='text/javascript'>
+    let myChart = echarts.init(document.getElementById('price_chart'));
+    // 指定图表的配置项和数据
+    option = {
+        animation: false,
+        title: {
+            text: ''
+        },
+        legend: {},
+        grid: {
+            containLabel: false,
+        },
+        toolbox: {
+            show: false
+        },
+        xAxis: {
+            type: 'category',
+            boundaryGap: false,
+            data: {{@timeHistory}}
+        },
+        yAxis: {
+            type: 'value',
+            axisLabel: {
+                formatter(val){
+                    if(val < 10000000){
+                        return parseFloat(val) / 10000 + ' 万'
+                    }
+                    return parseFloat(val) / 100000000 + ' 亿'
+                }
+            },
+        },
+        series: [
+            {
+                name: '卖单',
+                type: 'line',
+                data: {{sellHistory}},
+                smooth: true
+            },
+            {
+                name: '收单',
+                type: 'line',
+                data: {{buyHistory}},
+                smooth: true
+            }
+        ]
+    };
+
+    myChart.setOption(option);
+</script>
+</html>

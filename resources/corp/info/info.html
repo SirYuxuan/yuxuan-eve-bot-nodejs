@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <style>
+    table{
+      border-collapse:collapse;
+      table-layout:fixed;
+      border-radius:5px;
+      overflow:hidden;
+      border:2px solid #70aefb ;
+      background-color: #328ef4;
+      color: #c7dafb;
+      width: 800px;
+    }
+    table td,th{
+      /* padding: 5px;
+      width: 33%; */
+      text-align: center;
+      border:1px solid #70aefb ;
+      vertical-align:middle;
+      /* font-size: 15px; */
+    }
+  </style>
+</head>
+<body>
+  <div id="container">
+    <h3>{{name}},您的信息如下：</h3>
+    <table >
+      <tr>
+        <td>角色名</td>
+        <td>技能点数</td>
+        <td>ISK</td>
+        <td>当前技能</td>
+        <td>技能结束时间</td>
+        <td>未决合同</td>
+      </tr>
+      {{each list}}
+      <tr>
+        <td>{{$value['characterName']}}</td>
+        <td>{{$value['skill']}}</td>
+        <td>{{$value['isk']}}</td>
+        <td>{{$value['skillName']}}</td>
+        <td>{{$value['skillEndTime']}}</td>
+        <td>暂不支持</td>
+      </tr>
+      {{/each}}
+
+    </table>
+  </div>
+
+</body>
+</html>

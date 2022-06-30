@@ -1,0 +1,35 @@
+{
+  "name": "yuxuan-bot",
+  "version": "0.0.1",
+  "author": "Sir丶雨轩",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "test": "node ./test/test.js",
+    "app": "node ./app.js",
+    "start": "pm2 start ./config/pm2/pm2.json"
+  },
+  "engines": {
+    "node": ">= v14"
+  },
+  "keywords": [
+    "qqBot",
+    "yuxuan"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "art-template": "^4.13.2",
+    "axios": "^0.27.2",
+    "form-data": "^4.0.0",
+    "lodash": "^4.17.21",
+    "log4js": "^6.5.2",
+    "node-fetch": "^3.2.6",
+    "oicq": "^2.3.1",
+    "puppeteer": "^15.1.1",
+    "qs": "^6.11.0",
+    "redis": "^4.1.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.18.0"
+  }
+}
