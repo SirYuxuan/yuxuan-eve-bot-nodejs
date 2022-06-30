@@ -95,20 +95,26 @@
             <div class='object_info_title'>
                 <div class='object_info_title_cn' id='object_info_title_cn_name'><span class='title'>中文名: </span><span class='title'>{{typeName}}</span></div>
                 <div class='object_info_title_en' id='object_info_title_en_name'><span class='title'>英文名: </span><span>{{typeEnName}}</span></div>
+                <div class='object_info_title_en' id=''><span class='title'>服务器: </span><span>{{server}}</span></div>
             </div>
             <div class='object_info_title'>
                 <div class='object_info_title_buy' id='object_info_title_buy'><span class='title'>收单</span>: <span>{{buy}} ISK</span></div>
                 <div class='object_info_title_seller' id='object_info_title_seller'><span class='title'>卖单</span>: <span>{{sell}} ISK</span></div>
+                <div class='object_info_title_seller' ><span class='title'>平均</span>: <span>{{split}} ISK</span></div>
             </div>
             {{if typeName == '伊甸币'}}
             <div class='object_info_title' >
                 <div class='object_info_title_buy' ><span class='title'>套装收单</span>: <span>{{ buy500 }} ISK</span></div>
                 <div class='object_info_title_seller' ><span class='title'>套装卖单</span>: <span>{{sell500}} ISK</span></div>
+                <div class='object_info_title_seller' ><span class='title'>套装平均</span>: <span>{{split500}} ISK</span></div>
             </div>
             {{/if}}
         </div>
 
-        <div class='price_table_container' >
+        <div class='price_table_container' id="not_history"  style="padding: 0px;color: red;font-size: 20px;display: none;width: 800px;text-align: center;margin-bottom: 20px">
+            没有交易历史
+        </div>
+        <div class='price_table_container' id="price_table_container" >
             <table class='price_table'>
                 <tr>
                     <th class='price_table_th'>30天平均收单</th>
@@ -134,15 +140,17 @@
         </div>
         <div id='price_chart'></div>
         <span  style='color: red;width: 500px;text-align: center;display: block;margin: -10px auto auto;'>
-            Create By 雨轩机器人 & 机器人内测群：601162540
+            Create By 雨轩机器人 & 游戏内赞助：Yuxuan & 如需使用可直接邀请
         </span>
         <br>
     </div>
 </div>
 </body>
 <script type='text/javascript'>
-    let myChart = echarts.init(document.getElementById('price_chart'));
+
     // 指定图表的配置项和数据
+    let times = {{@timeHistory}}
+
     option = {
         animation: false,
         title: {
@@ -158,7 +166,7 @@
         xAxis: {
             type: 'category',
             boundaryGap: false,
-            data: {{@timeHistory}}
+            data: times
         },
         yAxis: {
             type: 'value',
@@ -186,7 +194,14 @@
             }
         ]
     };
+    if(times.length > 0){
+        let myChart = echarts.init(document.getElementById('price_chart'));
+        myChart.setOption(option);
+    }else{
+        document.querySelector('#price_table_container').style.display = 'none'
+        document.querySelector('#price_chart').style.display = 'none'
+        document.querySelector('#not_history').style.display = 'block'
+    }
 
-    myChart.setOption(option);
 </script>
 </html>

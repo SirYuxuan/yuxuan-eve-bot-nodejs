@@ -21,7 +21,7 @@ let config = {
     // app模组配置
     app:{
         corp:{
-            path: 'http://localhost:10003/'
+            path: 'http://api.hd-eve.com/'
         },
         eve:{
             market:{

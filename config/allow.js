@@ -5,15 +5,14 @@ let allow = {
     },
     corp: {
         default:[],
-        info:[ 985570381,],
-        pap:[ 985570381,],
-        rat:[ 985570381,],
+        info:[ 985570381,601162540],
+        pap:[ 985570381,601162540],
+        rat:[ 985570381,601162540],
         checkJoin:[601162540]
     },
-    other: {
+    help: {
         default:[],
     },
-    admin: [-1],
 }
 
 export {allow}

@@ -22,14 +22,19 @@
 	},
 	"eve": {
 		"price": {
-			"reg": "^(jita|.jita|ojita|.ojita|gjita|.gjita)(.*)$",
+			"reg": "^(jita|.jita|ojita|.ojita|gjita|.gjita|col|.col|gcol|.gcol)(.*)$",
 			"priority": 500,
-			"describe": "EVE查询-价格查询：指令：(jita xxx|gjita xxx)"
+			"describe": "EVE查询-价格查询指令：\n- jita xxx|gjita xxx\n- col 高级水晶|gcol 高级水晶"
 		},
 		"industrySystems": {
 			"reg": "^(系数|工业系数|工业指数)(.*)$",
 			"priority": 501,
-			"describe": "EVE查询-工业系数查询：指令：(系数 4-HWWF)"
+			"describe": "EVE查询-工业系数查询指令：(系数 4-HWWF)"
+		},
+		"trans": {
+			"reg": "^(翻译|tr|.tr|.trans|trans)(.*)$",
+			"priority": 502,
+			"describe": "EVE查询-物品翻译指令：(tr 毒蜥级)"
 		}
 	},
 	"help": {
