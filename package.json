@@ -7,7 +7,8 @@
   "scripts": {
     "test": "node ./test/test.js",
     "app": "node ./app.js",
-    "start": "pm2 start ./config/pm2/pm2.json"
+    "start": "pm2 start ./config/pm2/pm2.json",
+    "stop": "pm2 stop ./config/pm2/pm2.json"
   },
   "engines": {
     "node": ">= v14"
