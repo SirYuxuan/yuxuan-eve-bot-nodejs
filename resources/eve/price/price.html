@@ -5,20 +5,20 @@
     <title>X</title>
     <style>
         @font-face {
-            font-family: 'tttgbnumber';
-            src: url('{{_res_path}}/font/tttgbnumber.ttf');
+            font-family: PingFangSC;
+            src: url('../../../../resources/font/tttgbnumber.ttf');
             font-weight: normal;
             font-style: normal;
         }
 
         @font-face {
-            font-family: 'hanyi';
-            src: url('{{_res_path}}/font/hanyi.ttf');
+            font-family: PingFangSC;
+            src: url('../../../../resources/font/hanyi.ttf');
             font-weight: normal;
             font-style: normal;
         }
         *{
-            font-family: tttgbnumber;
+            font-family: PingFangSC;
         }
         .container {
             box-sizing: border-box;
@@ -44,8 +44,9 @@
         }
 
         .object_info_image {
-            height: 64px;
-            width: 64px;
+            height: 84px;
+            width: 84px;
+            padding-top: 12px;
         }
 
         .object_info_image img {
@@ -54,7 +55,7 @@
         }
 
         .price_table_container{
-            margin-top: 30px;
+            margin-top: 50px;
         }
         .price_table {
             width: 800px;
@@ -76,11 +77,41 @@
             height: 400px;
         }
         .up{
-            color: green;
+            color: rgb(64, 124, 64);
         }
         .down{
-            color: red;
+            color: rgb(228, 82, 82);
         }
+
+        .haha {
+            width: 92px;
+            text-align: center;
+            display: inline-block;
+        }
+
+        td {
+            padding: 0 10px;
+        }
+
+        .title {
+            color: #333;
+            font-size: 14px;
+        }
+
+        .title_content{
+            color: rgb(119, 119, 119);
+            font-weight: 400;
+            font-size: 18px;
+            padding-left: 6px;
+        }
+
+        .fuck {
+            padding:12px 6px 0px 6px;
+            margin-left: 6px;
+            border-left: 1px solid rgb(178, 178, 178);;
+            font-size: 0;
+        }
+
     </style>
     <link rel='stylesheet' href='{{_res_path}}/style/base.css'>
     <script src='{{_res_path}}/echarts/echarts.js'></script>
@@ -114,32 +145,35 @@
         <div class='price_table_container' id="not_history"  style="padding: 0px;color: red;font-size: 20px;display: none;width: 800px;text-align: center;margin-bottom: 20px">
             没有交易历史
         </div>
+
         <div class='price_table_container' id="price_table_container" >
             <table class='price_table'>
                 <tr>
                     <th class='price_table_th'>30天平均收单</th>
                     <td>
                         {{if buyScale>0}}
-                        <span class='up'>{{buyScale}}%,</span>
+                        <span class='up haha'><span style='font-weight: bold'>&uarr;</span> {{buyScale}}%,</span>
                         {{else}}
-                        <span class='down'>{{buyScale}}%,</span>
+                        <span class='down haha'><span style='font-weight: bold'>&darr;</span> {{buyScale}}%,</span>
                         {{/if}}
-                        {{buy30}} ISK</td>
+                        {{buy30}} ISK
                 </tr>
                 <tr>
                     <th class='price_table_th'>30天平均卖单</th>
                     <td>
                         {{if sellScale>0}}
-                        <span class='up'>{{sellScale}}%,</span>
+                        <span class='up haha'><span style='font-weight: bold'>&uarr;</span> {{sellScale}}%,</span>
                         {{else}}
-                        <span class='down'>{{sellScale}}%,</span>
+                        <span class='down haha'><span style='font-weight: bold'>&darr;</span> {{sellScale}}%,</span>
                         {{/if}}
-                        {{sell30}} ISK</td>
+                        {{sell30}} ISK
+                    </td>
                 </tr>
             </table>
         </div>
+
         <div id='price_chart'></div>
-        <span  style='color: red;width: 500px;text-align: center;display: block;margin: -10px auto auto;'>
+        <span  style='color: #999;width: 500px;text-align: center;display: block;margin: -10px auto auto;font-size: 14px;'>
             Create By 雨轩机器人 & 游戏内赞助：Yuxuan & 如需使用可直接邀请
         </span>
         <br>
