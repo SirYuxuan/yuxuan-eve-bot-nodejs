@@ -15,7 +15,7 @@ let config = {
     // 主人QQ
     masterQQ: [1718018032,],
     //黑名单qq
-    blackQQ:[],
+    blackQQ:[863992136],
     //黑名单q群
     blackGroup:[],
     // app模组配置
@@ -24,6 +24,10 @@ let config = {
             path: 'http://api.hd-eve.com/'
         },
         eve:{
+            adGroup:[
+                985570381,
+                860982239
+            ],
             market:{
                 // 显示多少天的图表，-1为最大时间
                 echartsDay: -1
