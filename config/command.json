@@ -21,6 +21,11 @@
 			"priority": 500,
 			"describe": "混沌信息查询-LP信息查询：指令：lp"
 		},
+		"papRank": {
+			"reg": "^papRank$",
+			"priority": 500,
+			"describe": "军团pap排行榜：指令：papRank"
+		},
 		"checkJoin": {
 			"reg": "noCheck"
 		}
