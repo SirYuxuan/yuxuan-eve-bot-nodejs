@@ -13,7 +13,7 @@ let config = {
         autoFriend: 1,     //1-自动同意加好友 0-好友请求不处理
     },
     // 主人QQ
-    masterQQ: [1718018032,],
+    masterQQ: [1718018032],
     //黑名单qq
     blackQQ:[863992136],
     //黑名单q群
