@@ -21,6 +21,11 @@
 			"priority": 500,
 			"describe": "混沌信息查询-LP信息查询：指令：lp"
 		},
+		"lpLink": {
+			"reg": "^lpLink$",
+			"priority": 500,
+			"describe": "混沌信息查询-获取邀请链接：指令：lpLink"
+		},
 		"papRank": {
 			"reg": "^papRank$",
 			"priority": 500,
