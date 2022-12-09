@@ -4,7 +4,7 @@
     <meta charset='UTF-8'>
     <title>X</title>
     <style>
-   
+
         *{
             font-family: Microsoft YaHei,serif;
         }
@@ -117,15 +117,15 @@
                 <div class='object_info_title_en' id=''><span class='title'>服务器: </span><span>{{server}}</span></div>
             </div>
             <div class='object_info_title'>
-                <div class='object_info_title_buy' id='object_info_title_buy'><span class='title'>收单</span>: <span>{{buy}} ISK</span></div>
-                <div class='object_info_title_seller' id='object_info_title_seller'><span class='title'>卖单</span>: <span>{{sell}} ISK</span></div>
+                <div class='object_info_title_buy' id='object_info_title_buy'><span class='title'>收单</span>: <span>{{buy}}</span></div>
+                <div class='object_info_title_seller' id='object_info_title_seller'><span class='title'>卖单</span>: <span>{{sell}}</span></div>
                 <div class='object_info_title_seller' ><span class='title'>平均</span>: <span>{{split}} ISK</span></div>
             </div>
             {{if typeName == '伊甸币'}}
             <div class='object_info_title' >
-                <div class='object_info_title_buy' ><span class='title'>套装收单</span>: <span>{{ buy500 }} ISK</span></div>
-                <div class='object_info_title_seller' ><span class='title'>套装卖单</span>: <span>{{sell500}} ISK</span></div>
-                <div class='object_info_title_seller' ><span class='title'>套装平均</span>: <span>{{split500}} ISK</span></div>
+                <div class='object_info_title_buy' ><span class='title'>套装收单</span>: <span>{{ buy500 }}</span></div>
+                <div class='object_info_title_seller' ><span class='title'>套装卖单</span>: <span>{{sell500}}</span></div>
+                <div class='object_info_title_seller' ><span class='title'>套装平均</span>: <span>{{split500}}</span></div>
             </div>
             {{/if}}
         </div>
@@ -139,22 +139,33 @@
                 <tr>
                     <th class='price_table_th'>30天平均收单</th>
                     <td>
-                        {{if buyScale>0}}
-                        <span class='up haha'><span style='font-weight: bold'>&uarr;</span> {{buyScale}}%,</span>
+                        {{if buyPrice30DayMedianDelta>0}}
+                        <span class='up haha'><span style='font-weight: bold'>&uarr;</span> {{buyPrice30DayMedianDelta}}%,</span>
                         {{else}}
-                        <span class='down haha'><span style='font-weight: bold'>&darr;</span> {{buyScale}}%,</span>
+                        <span class='down haha'><span style='font-weight: bold'>&darr;</span> {{buyPrice30DayMedianDelta}}%,</span>
                         {{/if}}
-                        {{buy30}} ISK
+                        {{buyPrice30DayMedian}} ISK
                 </tr>
                 <tr>
                     <th class='price_table_th'>30天平均卖单</th>
                     <td>
-                        {{if sellScale>0}}
-                        <span class='up haha'><span style='font-weight: bold'>&uarr;</span> {{sellScale}}%,</span>
+                        {{if sellPrice30DayMedianDelta>0}}
+                        <span class='up haha'><span style='font-weight: bold'>&uarr;</span> {{sellPrice30DayMedianDelta}}%,</span>
                         {{else}}
-                        <span class='down haha'><span style='font-weight: bold'>&darr;</span> {{sellScale}}%,</span>
+                        <span class='down haha'><span style='font-weight: bold'>&darr;</span> {{sellPrice30DayMedianDelta}}%,</span>
                         {{/if}}
-                        {{sell30}} ISK
+                        {{sellPrice30DayMedian}} ISK
+                    </td>
+                </tr>
+                <tr>
+                    <th class='price_table_th'>30天平均中间价</th>
+                    <td>
+                        {{if splitPrice30DayMedianDelta>0}}
+                        <span class='up haha'><span style='font-weight: bold'>&uarr;</span> {{splitPrice30DayMedianDelta}}%,</span>
+                        {{else}}
+                        <span class='down haha'><span style='font-weight: bold'>&darr;</span> {{splitPrice30DayMedianDelta}}%,</span>
+                        {{/if}}
+                        {{splitPrice30DayMedian}} ISK
                     </td>
                 </tr>
             </table>

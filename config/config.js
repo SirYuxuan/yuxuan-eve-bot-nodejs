@@ -9,7 +9,7 @@ let config = {
         qq:"2438372649",  //账号
         pwd:"",  //密码，可为空则用扫码登录
         logLevel: 'info', //日志等级:trace,debug,info,warn,error,fatal,mark,off
-        platform:"3",       //1:安卓手机、 2:aPad 、 3:安卓手表、 4:MacOS 、 5:iPad
+        platform:"1",       //1:安卓手机、 2:aPad 、 3:安卓手表、 4:MacOS 、 5:iPad
         autoFriend: 1,     //1-自动同意加好友 0-好友请求不处理
     },
     // 主人QQ
