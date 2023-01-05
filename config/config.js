@@ -21,7 +21,7 @@ let config = {
     // app模组配置
     app:{
         corp:{
-            path: 'http://api.hd-eve.com/'
+            path: 'https://api.new.hd-eve.com/'
         },
         eve:{
             adGroup:[
